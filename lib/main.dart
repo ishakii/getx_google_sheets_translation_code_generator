@@ -8,6 +8,16 @@ void main() {
   updateLocalizationFile();
 }
 
+/*
+
+1- Share spreadsheet to publicly readable
+2- Change [documentId]
+
+3- then type:
+dart main.dart
+
+*/
+
 Future updateLocalizationFile() async {
   //the document id for your google sheet
   String documentId = "1oS7iJ6ocrZBA53SxRfKF0CG9HAaXeKtzvsTBhgG4Zzk";
@@ -113,9 +123,20 @@ class Localization extends Translations {
     stdout.writeln('---------------------------------------');
     stdout.writeln('Saving localization.g.dart');
     stdout.writeln('---------------------------------------');
+
     final file = File('localization.g.dart');
     await file.writeAsString(_localizationFile);
-    stdout.writeln('Done...');
+
+    stdout.writeln('');
+    stdout.writeln('---------------------------------------');
+    stdout.writeln('INFO: if there is no translation in the file:');
+    stdout.writeln('  1. Check the spreadsheet is publicly readable');
+    stdout.writeln('  2. Check documentId is correct');
+    stdout.writeln('  3. Check gid is correct');
+    stdout.writeln('---------------------------------------');
+
+    stdout.writeln('');
+    stdout.writeln('DONE...');
   } catch (e) {
     //output error
     stderr.writeln('error: networking error');
